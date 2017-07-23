@@ -1,4 +1,4 @@
-package com.gammarush.main;
+package com.gammarush.main.pdf;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,8 +39,20 @@ public class PDF {
 		addText(text, x, y, page);
 	}
 	
+	public void save(String path) throws IOException {
+		document.save(path);
+	}
+	
+	public void close() throws IOException {
+		document.close();
+	}
+	
 	public PDPageTree getPages() {
 		return document.getPages();
+	}
+	
+	public PDDocument getDocument() {
+		return document;
 	}
 	
 	public void setFont(PDFont font, float fontSize) {
@@ -54,14 +66,6 @@ public class PDF {
 	
 	public void setFontSize(float fontSize) {
 		setFont(this.font, fontSize);
-	}
-	
-	public void save(String path) throws IOException {
-		document.save(path);
-	}
-	
-	public void close() throws IOException {
-		document.close();
 	}
 
 }
