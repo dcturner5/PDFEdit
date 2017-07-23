@@ -1,0 +1,7 @@
+provider.data.firstname=Donald
+provider.data.lastname=Trump
+provider.data.street=1600 Pennsylvania Avenue
+provider.data.city=Washington
+provider.data.state=DC
+provider.data.zip=20500
+provider.data.signature=Donald J. Trump

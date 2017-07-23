@@ -1,18 +1,33 @@
 package com.gammarush.main;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.gammarush.main.parser.position.PositionData;
+import com.gammarush.main.parser.position.PositionParser;
+import com.gammarush.main.parser.text.TextData;
+import com.gammarush.main.parser.text.TextParser;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        PDF pdf = new PDF("res/input.pdf");
+    	PDF pdf = new PDF("res/input.pdf");
+    	List<TextData> texts = TextParser.parse("res/input-texts.txt");
+    	List<PositionData> positions = PositionParser.parse("res/input-positions.txt");
     	
-        pdf.setFontSize(14);
-    	pdf.addText("The quick brown fox jumps over the lazy dog.", .25f, .5f, 0);
+    	for(TextData t : texts) {
+    		for(PositionData p : positions) {
+    			if(t.name.equals(p.name)) {
+    				pdf.addText(t.text, p.x, p.y, p.pageIndex);
+    				break;
+    			}
+    		}
+    	}
     	
-    	System.out.println("PDF Saved");
     	pdf.save("res/output.pdf");
     	pdf.close();
+    	
+    	System.out.println("PDF Saved");
     }
     
 }
