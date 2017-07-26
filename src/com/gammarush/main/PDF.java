@@ -39,6 +39,10 @@ public class PDF {
 		addText(text, x, y, page);
 	}
 	
+	public PDDocument getDocument() {
+		return document;
+	}
+	
 	public PDPageTree getPages() {
 		return document.getPages();
 	}
