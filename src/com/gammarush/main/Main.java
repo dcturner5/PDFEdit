@@ -15,8 +15,8 @@ public class Main {
     	List<TextData> texts = TextParser.parse("res/input-texts.txt");
     	List<PositionData> positions = PositionParser.parse("res/input-positions.txt");
     	
-    	for(TextData t : texts) {
-    		for(PositionData p : positions) {
+    	for(PositionData p : positions) {
+    		for(TextData t : texts) {
     			if(t.name.equals(p.name)) {
     				pdf.addText(t.text, p.x, p.y, p.pageIndex);
     				break;
